@@ -1,5 +1,6 @@
 import {EXPLANATIONS, SYSTEMS, type SystemId} from './anatomy';
 import type {Locale} from './preferences';
+import terminology from './terminology/zh-Hant.json';
 
 const zh: Record<string, string> = {
  'INTERACTIVE ANATOMY':'互動人體解剖', 'Human Atlas':'人體圖譜', 'modeled pieces':'個模型部件',
@@ -9,10 +10,10 @@ const zh: Record<string, string> = {
  'Respiratory':'呼吸系統', 'Digestive':'消化系統', 'Urinary':'泌尿系統', 'Lymphatic':'淋巴系統', 'Endocrine':'內分泌系統',
  'Reproductive':'生殖系統', 'Body surface':'體表', 'Connective tissue':'結締組織', 'Show':'顯示', 'Show only':'僅顯示',
  'pieces visible':'個可見部件', 'Hide all':'全部隱藏', 'Find anatomy':'尋找解剖構造', 'Close search':'關閉搜尋',
- 'Heart, femur, cranial nerve…':'心臟、股骨、腦神經（英文名稱）…', 'Search named anatomical structures':'搜尋解剖構造名稱',
+ 'Heart, femur, cranial nerve…':'心臟、股骨、腦神經…', 'Search named anatomical structures':'搜尋解剖構造名稱',
  'No structures match your search.':'找不到符合的構造。', 'piece':'個部件', 'pieces':'個部件',
- 'Showing up to 80 matches. Refine your search to find smaller structures.':'最多顯示 80 筆結果。請使用更精確的英文名稱或圖譜編號搜尋。',
- 'Start with a major organ, or search every named structure.':'從主要器官開始，或以英文名稱、圖譜編號搜尋所有構造。',
+ 'Showing up to 80 matches. Refine your search to find smaller structures.':'最多顯示 80 筆結果。請使用更精確的中英文名稱或圖譜編號搜尋。',
+ 'Start with a major organ, or search every named structure.':'從主要器官開始，或以中英文名稱、圖譜編號搜尋所有構造。',
  'Camera controls':'視角控制', 'three-quarter view':'四分之三視角', 'front view':'正面視角', 'side view':'側面視角', 'back view':'背面視角',
  'Pause rotation':'暫停旋轉', 'Rotate body':'旋轉人體', 'Auto rotate':'自動旋轉', 'Reset view and layers':'重設視角與圖層', 'Reset':'重設',
  'SELECTED STRUCTURE':'已選取構造', 'ANATOMICAL INVENTORY':'解剖構造總覽', 'SEPARATED STRUCTURES':'分離構造', 'ADULT HUMAN · MALE':'成年人體 · 男性',
@@ -37,7 +38,7 @@ const zh: Record<string, string> = {
  'The 3D session was paused by your device. Reload to continue.':'裝置已暫停 3D 檢視器，請重新載入以繼續。',
  'Interactive human anatomy. Drag to orbit, pinch or scroll to zoom, and tap a structure to inspect it.':'互動人體解剖。拖曳旋轉、雙指或捲動縮放，並點選構造查看詳細資訊。',
 };
-const names: Record<string, string> = {heart:'心臟',brain:'腦',liver:'肝臟',stomach:'胃',spleen:'脾臟',pancreas:'胰臟','urinary bladder':'膀胱',trachea:'氣管',diaphragm:'橫膈'};
+const names: Record<string, string> = terminology;
 const descriptions: Record<string, string> = {
  heart:'胸腔中的肌肉幫浦。右側將血液送往肺部，左側則將血液送入全身循環。',
  brain:'神經系統的中樞器官。相互連結的區域支援感知、運動、記憶、語言與身體功能的調節。',
@@ -68,5 +69,6 @@ const systemDescriptions: Record<SystemId, string> = {
 };
 export function translate(locale: Locale, text: string): string { return locale === 'zh-Hant' ? zh[text] ?? text : text; }
 export function anatomyName(locale: Locale, name: string): string { return locale === 'zh-Hant' ? names[name.toLowerCase()] ?? name : name; }
+export function anatomyChineseName(name: string): string { return names[name.toLowerCase()] ?? ''; }
 export function anatomyMatches(name: string, id: string, query: string): boolean { const term=query.trim().toLowerCase(); return name.toLowerCase().includes(term)||id.toLowerCase().includes(term)||(names[name.toLowerCase()]??'').includes(term); }
 export function anatomyDescription(locale: Locale, name: string, system: SystemId): string { return locale === 'zh-Hant' ? descriptions[name.toLowerCase()] ?? systemDescriptions[system] : EXPLANATIONS[name.toLowerCase()] ?? SYSTEMS.find(s=>s.id===system)?.description ?? ''; }

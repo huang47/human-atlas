@@ -12,7 +12,7 @@ An interactive 3D anatomy explorer built with React, Three.js, and shadcn/ui. Ta
 - Search anatomical names and source identifiers.
 - Isolate a selected structure and read its details.
 - Use compact controls and detail panels on mobile.
-- Switch the interface between English and Traditional Chinese. System descriptions and major organs are translated; other anatomical names retain the source's English terminology. Search accepts English names, source identifiers, and the translated major-organ names.
+- Switch the interface between English and Traditional Chinese. In Traditional Chinese mode, all 3,432 anatomical concepts keep their source English name with a smaller Chinese annotation in search, details, included structures, and hover labels. Search accepts Chinese names, English names, and source identifiers.
 - Choose System, Dark, or Light appearance. Preferences persist in the browser; System follows changes to the device's color scheme. Theme changes also update the 3D environment without reloading the model.
 
 ## Run locally
@@ -32,6 +32,7 @@ Open http://localhost:3016. To build the static site, run `npm run build`; the o
 npm run check
 node scripts/validate-atlas.mjs
 node scripts/validate-interactions.mjs
+node scripts/validate-terminology.mjs
 npm run build
 ```
 

@@ -120,3 +120,13 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 @media(max-width:1000px){.preferences-panel{left:20px}}
 @media(max-width:767px){.preferences-panel{top:max(94px,calc(env(safe-area-inset-top) + 76px));left:max(12px,env(safe-area-inset-left));max-width:calc(100% - 24px)}.view-controls{top:max(144px,calc(env(safe-area-inset-top) + 126px))}.search-panel{top:max(144px,calc(env(safe-area-inset-top) + 126px))}}
 @media(max-height:600px) and (orientation:landscape){.preferences-panel{top:75px;left:20px}.view-controls{top:76px}.search-panel{top:134px}.layers-panel.mobile-open{z-index:30}.identity .identity-meta{display:none}}
+
+/* Source names stay primary; Traditional Chinese is a secondary annotation. */
+.bilingual-name{display:flex;flex-direction:column;align-items:flex-start;min-width:0;gap:3px;white-space:normal}
+.terminology-zh{display:block;font-size:12px;font-weight:400;line-height:1.45;letter-spacing:0;text-transform:none;color:var(--muted-foreground);overflow-wrap:anywhere}
+.structure-title .terminology-zh{font-size:14px;margin-top:2px}
+.scene-caption .bilingual-name{align-items:center}
+.scene-caption .terminology-zh{font-size:10px}
+.part-hover .terminology-zh{margin-top:4px;color:inherit;opacity:.85}
+.anatomy-search-results [data-slot=combobox-item]{padding-block:9px}
+@media(max-width:767px){.structure-title .terminology-zh{font-size:12px}.detail-sheet:has(.terminology-zh){max-height:56dvh}.detail-header{flex-shrink:0;min-height:0;max-height:calc(100% - 160px);overflow-y:auto}}

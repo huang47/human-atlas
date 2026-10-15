@@ -27,3 +27,9 @@ Earlier repository revisions included female reference anatomy: Kristen Browne a
 Adaptations: translated native meter/Y-up coordinates onto the stage, coincident vertices welded and source normals averaged, geometry simplified with a 0.2% per-structure relative error bound, and normals quantized. Colors and display systems are curated for this interface. All 888 source meshes are represented, with 1,073 source nodes available as selectable individual or compound concepts.
 
 This is a reference assembly with whole-body surface and selected organs, including female reproductive anatomy. Its skeleton and muscle coverage is partial. It is not a complete model of every human structure or a single-person scan. Eight placenta/umbilical structures are classified under Pregnancy reference and hidden by default.
+
+## Traditional Chinese terminology
+
+Chinese annotations are adapted from the [undergravity/human-atlas terminology dictionary](https://github.com/undergravity/human-atlas/blob/d82f3e04602b83cf9a0847fa7497d93a7827e1fe/app/dict.json), under the [MIT license](licenses/undergravity-human-atlas-MIT.txt), converted to Traditional Chinese with OpenCC.js, and edited for laterality, ordinals, and anatomical distinctions.
+
+The [National Academy for Educational Research Human Anatomy glossary](https://data.gov.tw/dataset/14549) supplies additional terminology under the [Government Open Data License 1.0](https://data.gov.tw/license). Original English/FMA names are retained alongside the annotations. Some ontology labels use descriptive translations.
