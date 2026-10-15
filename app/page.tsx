@@ -4,11 +4,12 @@ import {translate, anatomyName, anatomyMatches, anatomyDescription} from './i18n
 import {assetUrl} from './asset-url';
 import {registerAtlasTools} from './agent-tools';
 import {useEffect,useMemo,useRef,useState} from 'react';
-import {Activity,ArrowUpRight,ChevronRight,Focus,Info,Layers3,Pause,RotateCcw,RotateCw,Search,X} from 'lucide-react';
+import {Activity,ArrowUpRight,ChevronDown,ChevronRight,Focus,Info,Layers3,Pause,RotateCcw,RotateCw,Search,X} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Badge} from '@/components/ui/badge';
 import {Slider} from '@/components/ui/slider';
 import {Switch} from '@/components/ui/switch';
+import {DropdownMenu,DropdownMenuTrigger,DropdownMenuContent,DropdownMenuRadioGroup,DropdownMenuRadioItem} from '@/components/ui/dropdown-menu';
 import {Sheet,SheetContent,SheetTitle,SheetDescription} from '@/components/ui/sheet';
 import {Combobox,ComboboxInput,ComboboxContent,ComboboxList,ComboboxItem,ComboboxEmpty} from '@/components/ui/combobox';
 import AnatomyScene from './scene';
@@ -38,7 +39,10 @@ export default function Home(){
   {atlas&&<AnatomyScene dark={dark} locale={locale} atlas={atlas} state={{...state,inspectorOpen:details&&selectedParts.length>0}} onSelect={choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
   <div className="vignette"/>
   <header className="identity"><div className="eyebrow"><span className="status-dot"/> {t("INTERACTIVE ANATOMY")}</div><h1>{t("Human Atlas")}<Badge variant="outline" className="edition">3D</Badge></h1><div className="identity-meta">{atlas?atlas.parts.length.toLocaleString():'2,234'} {t("modeled pieces")} <span>·</span> {t("BodyParts3D")}</div></header>
-  <div className="preferences-panel glass"><div className="language-control" role="group" aria-label={t('Language')}><button type="button" aria-pressed={locale==='en'} onClick={()=>setLocale('en')}>EN</button><button type="button" aria-pressed={locale==='zh-Hant'} onClick={()=>setLocale('zh-Hant')}>繁體中文</button></div><label className="theme-control"><span>{t('Theme')}</span><select aria-label={t('Theme')} value={theme} onChange={e=>setTheme(e.target.value as typeof theme)}><option value="system">{t('System')}</option><option value="dark">{t('Dark')}</option><option value="light">{t('Light')}</option></select></label></div>
+  <div className="preferences-panel">
+   <DropdownMenu><DropdownMenuTrigger render={<Button variant="ghost" className="preference-trigger glass"/>} aria-label={`${t('Language')}: ${locale==='en'?'EN':'繁體中文'}`}><span>{locale==='en'?'EN':'繁體中文'}</span><ChevronDown size={12}/></DropdownMenuTrigger><DropdownMenuContent className="preference-menu" align="start"><DropdownMenuRadioGroup value={locale} onValueChange={value=>setLocale(value as typeof locale)}><DropdownMenuRadioItem closeOnClick value="en">English</DropdownMenuRadioItem><DropdownMenuRadioItem closeOnClick value="zh-Hant">繁體中文</DropdownMenuRadioItem></DropdownMenuRadioGroup></DropdownMenuContent></DropdownMenu>
+   <DropdownMenu><DropdownMenuTrigger render={<Button variant="ghost" className="preference-trigger glass"/>} aria-label={`${t('Theme')}: ${t({system:'System',dark:'Dark',light:'Light'}[theme])}`}><span>{t({system:'System',dark:'Dark',light:'Light'}[theme])}</span><ChevronDown size={12}/></DropdownMenuTrigger><DropdownMenuContent className="preference-menu" align="start"><DropdownMenuRadioGroup value={theme} onValueChange={value=>setTheme(value as typeof theme)}><DropdownMenuRadioItem closeOnClick value="system">{t('System')}</DropdownMenuRadioItem><DropdownMenuRadioItem closeOnClick value="dark">{t('Dark')}</DropdownMenuRadioItem><DropdownMenuRadioItem closeOnClick value="light">{t('Light')}</DropdownMenuRadioItem></DropdownMenuRadioGroup></DropdownMenuContent></DropdownMenu>
+  </div>
   <nav className="top-actions" aria-label={t("Explorer panels")}><Button variant="ghost" className={panel==='search'?'active':''} onClick={()=>openPanel('search')} aria-label={t("Search anatomy")}><Search size={18}/><span>{t("Find a structure")}</span><kbd>/</kbd></Button><Button variant="ghost" className="icon-button" aria-label={t("About this atlas")} onClick={()=>{setDetails(false);setPanel(null);setAbout(true);}}><Info size={18}/></Button></nav>
   <section className={`layers-panel glass ${panel==='layers'?'mobile-open':''}`} aria-label={t("Anatomical layers")}>
    <div className="panel-heading"><span>{t("Systems")}</span><Button variant="ghost" className="mobile-only icon-button" onClick={()=>setPanel(null)} aria-label={t("Close systems")}><X size={18}/></Button><Badge variant="secondary" className="desktop-only small-number">{activeSystems.length}</Badge></div>

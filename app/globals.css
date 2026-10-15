@@ -88,14 +88,11 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 @media(max-height:600px) and (orientation:landscape){body:has(.detail-sheet) .bottom-dock{left:12px;right:324px;width:auto;transform:none;max-width:none;margin:0}}
 
 /* Preferences remain reachable without covering the mobile camera controls. */
-.preferences-panel{position:absolute;top:125px;left:30px;z-index:3;display:flex;align-items:center;gap:12px;padding:4px 8px 4px 4px;border-radius:12px}
-.language-control{display:flex;gap:2px;border-right:1px solid var(--border);padding-right:8px}
-.language-control button{min-width:44px;min-height:44px;padding:0 10px;border-radius:8px;font-size:12px;color:var(--muted-foreground)}
-.language-control button[aria-pressed=true]{background:var(--primary);color:var(--primary-foreground)}
-.language-control button[aria-pressed=true]:hover{background:var(--primary);color:var(--primary-foreground)}
-.theme-control{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted-foreground)}
-.theme-control select{min-height:44px;padding:0 26px 0 9px;border:1px solid var(--border);border-radius:8px;background:var(--background);color:var(--foreground);font:inherit;font-size:12px;cursor:pointer;max-width:145px}
-.theme-control select:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.preferences-panel{position:absolute;top:125px;left:30px;z-index:3;display:flex;align-items:center;gap:8px}
+.preference-trigger{display:inline-flex;align-items:center;gap:6px;min-width:58px;height:44px;padding:0 11px;border-radius:9px;font-size:12px;font-weight:400;color:var(--foreground)}
+.preference-trigger svg{color:var(--muted-foreground)}
+.preference-menu{min-width:160px;border:1px solid var(--border)}
+.preference-menu [data-slot=dropdown-menu-radio-item]{min-height:44px;padding:10px 34px 10px 12px;font-size:13px}
 .dark{color:#e1e9ef;background:#141b22;color-scheme:dark;--background:#141b22;--foreground:#e1e9ef;--card:#1e2934;--card-foreground:#e1e9ef;--popover:#1e2934;--popover-foreground:#e1e9ef;--primary:#94bfca;--primary-foreground:#14212a;--secondary:#2b3a47;--secondary-foreground:#e1e9ef;--muted:#2b3a47;--muted-foreground:#adbdc9;--accent:#314451;--accent-foreground:#e1e9ef;--border:#b3c9dc2b;--input:#b3c9dc40;--ring:#94bfca}
 .dark .glass{background:#1e2934ed;border-color:var(--border);box-shadow:0 16px 48px #00000025}
 .dark .vignette{background:radial-gradient(ellipse at 51% 43%,transparent 35%,#00000035 100%)}
@@ -107,7 +104,6 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 .dark .about-copy a,.dark .source-link{color:#9dccd7}
 .dark .top-actions button{background:#1e2934eb;color:var(--foreground)}
 .dark .top-actions button:hover,.dark button:not([data-slot]):hover{background:var(--accent);color:var(--foreground)}
-.dark .language-control button[aria-pressed=true]:hover{background:var(--primary);color:var(--primary-foreground)}
 .dark .top-actions kbd,.dark .structure-meta,.dark .panel-foot,.dark .detail-actions,.dark .member-list button,.dark .dock-reset,.dark .dock-layers{border-color:var(--border)}
 .dark .layer-presets,.dark .explode-label output,.dark .panel-heading .small-number,.dark .search-panel [data-slot=input-group]{background:var(--secondary);border-color:var(--border);color:var(--foreground)}
 .dark .layer-presets button{color:var(--muted-foreground)}
@@ -122,5 +118,5 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 .dark .system-row [data-slot=switch-thumb]{background:#e1e9ef}
 .dark .part-hover{background:#d7e5ed;color:#16232e}
 @media(max-width:1000px){.preferences-panel{left:20px}}
-@media(max-width:767px){.preferences-panel{top:max(94px,calc(env(safe-area-inset-top) + 76px));left:max(12px,env(safe-area-inset-left));gap:8px;max-width:calc(100% - 24px)}.theme-control>span{display:none}.theme-control select{max-width:128px}.view-controls{top:max(154px,calc(env(safe-area-inset-top) + 136px))}.search-panel{top:max(154px,calc(env(safe-area-inset-top) + 136px))}}
+@media(max-width:767px){.preferences-panel{top:max(94px,calc(env(safe-area-inset-top) + 76px));left:max(12px,env(safe-area-inset-left));max-width:calc(100% - 24px)}.view-controls{top:max(144px,calc(env(safe-area-inset-top) + 126px))}.search-panel{top:max(144px,calc(env(safe-area-inset-top) + 126px))}}
 @media(max-height:600px) and (orientation:landscape){.preferences-panel{top:75px;left:20px}.view-controls{top:76px}.search-panel{top:134px}.layers-panel.mobile-open{z-index:30}.identity .identity-meta{display:none}}
