@@ -130,3 +130,12 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 .part-hover .terminology-zh{margin-top:4px;color:inherit;opacity:.85}
 .anatomy-search-results [data-slot=combobox-item]{padding-block:9px}
 @media(max-width:767px){.structure-title .terminology-zh{font-size:12px}.detail-sheet:has(.terminology-zh){max-height:56dvh}.detail-header{flex-shrink:0;min-height:0;max-height:calc(100% - 160px);overflow-y:auto}}
+
+/* Keep preferences together with the search action in one responsive toolbar. */
+.top-actions{z-index:3;gap:8px}
+.top-actions .preferences-panel{position:static;display:flex;gap:8px;max-width:none}
+.top-actions .preference-trigger{width:auto;min-width:58px;height:44px;min-height:44px;padding:0 11px;gap:6px;font-size:12px}
+.top-actions .preference-trigger span{display:inline}
+@media(min-width:768px) and (max-width:1000px){.top-actions{top:125px}.search-panel{top:180px}}
+@media(max-width:767px){.top-actions{top:max(94px,calc(env(safe-area-inset-top) + 76px));left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));justify-content:flex-end;gap:6px}.top-actions .preferences-panel{gap:6px}.top-actions .preference-trigger{padding-inline:9px}.top-actions .search-trigger{flex-shrink:0}}
+@media(max-height:600px) and (orientation:landscape){.top-actions{top:16px;left:auto;right:max(12px,env(safe-area-inset-right));justify-content:flex-end}.top-actions .preferences-panel{margin-right:0}}
