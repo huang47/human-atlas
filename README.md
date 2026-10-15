@@ -12,6 +12,8 @@ An interactive 3D anatomy explorer built with React, Three.js, and shadcn/ui. Ta
 - Search anatomical names and source identifiers.
 - Isolate a selected structure and read its details.
 - Use compact controls and detail panels on mobile.
+- Switch the interface between English and Traditional Chinese. System descriptions and major organs are translated; other anatomical names retain the source's English terminology. Search accepts English names, source identifiers, and the translated major-organ names.
+- Choose System, Dark, or Light appearance. Preferences persist in the browser; System follows changes to the device's color scheme. Theme changes also update the 3D environment without reloading the model.
 
 ## Run locally
 
@@ -56,6 +58,8 @@ The repository includes browser-ready geometry. Rebuilding it is optional: obtai
 ## Deploy
 
 Import this repository into Vercel as a Vite project. The included `vercel.json` configures `npm ci`, `npm run build`, and the `dist` output directory. It can also be served by a static host.
+
+For `theonlyperson.com/anatomy`, run `npm run build:anatomy`. This prefixes application assets and anatomy downloads with `/anatomy/`. Copy `dist/` into the main site's `public/anatomy/` directory and rewrite `/anatomy` to `/anatomy/index.html` before the site's dynamic language routes.
 
 ## License
 

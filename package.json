@@ -9,6 +9,7 @@
     "dev": "vite --host 0.0.0.0 --port 3016",
     "build": "vite build",
     "build:vercel": "vite build",
+    "build:anatomy": "vite build --base=/anatomy/",
     "check": "tsc --noEmit"
   },
   "dependencies": {
